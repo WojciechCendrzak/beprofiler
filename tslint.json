@@ -1,0 +1,26 @@
+{
+  "defaultSeverity": "error",
+  "rulesDirectory": ["node_modules/tslint-eslint-rules/dist/rules"],
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": ["node_modules/**/*"],
+    "project": "tsconfig.json"
+  },
+  "jsRules": {},
+  "rules": {
+    "quotemark": [true, "single"],
+    "no-any": true,
+    "member-access": false,
+    "ordered-imports": false,
+    "interface-name": [true, "never-prefix"],
+    "object-literal-sort-keys": false,
+    "indent": [true, "spaces", 2],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "interface-over-type-literal": false,
+    "jsx-boolean-value": false,
+    "no-namespace": false,
+    "no-empty-interface": false,
+    "only-arrow-functions": false,
+    "no-var-requires": false
+  }
+}

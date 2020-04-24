@@ -1,0 +1,39 @@
+{
+  "name": "beprofiler",
+  "version": "0.0.1",
+  "description": "An easy block profiler",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "tslint": "tslint --project tsconfig.json 'src/**/*.{ts}'",
+    "tsc": "tsc --project tsconfig.json --skipLibCheck --noEmit",
+    "lint": "yarn tslint && yarn tsc",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WojciechCendrzak/beprofiler.git"
+  },
+  "prepublish": "tsc",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WojciechCendrzak/beprofiler/issues"
+  },
+  "homepage": "https://github.com/WojciechCendrzak/beprofiler#readme",
+  "dependencies": {
+    "moment": "2.24.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "jest": "25.4.0",
+    "prettier": "2.0.5",
+    "ts-jest": "25.4.0",
+    "tslint": "6.1.1",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-eslint-rules": "5.4.0",
+    "typescript": "3.8.3"
+  }
+}
