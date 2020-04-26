@@ -1,2 +1,2 @@
-import { Profiler } from './dist/profiler';
-export { Profiler };
+import { Profiler as ProfilerBase } from './dist/profiler';
+export declare class Profiler extends ProfilerBase {}

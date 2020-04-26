@@ -2,16 +2,16 @@
 import { now } from './profiler.service';
 
 export class ProfilerSection {
-  name: string;
-  parent?: ProfilerSection;
-  min: number = Number.MAX_VALUE;
-  max: number = 0;
-  average: number = 0;
-  triggerCount: number = 0;
+  public name: string;
+  public fullName: string;
+  public parent?: ProfilerSection;
+  public triggerCount: number = 0;
+  public minIntervalAsMilliseconds: number = Number.MAX_VALUE;
+  public maxIntervalAsMilliseconds: number = 0;
+  public avgIntervalAsMilliseconds: number = 0;
 
-  fullName: string;
-  timeOnEnter?: Date;
-  timeOnLeave?: Date;
+  public timeOnEnter?: Date;
+  public timeOnLeave?: Date;
 
   constructor(name: string, parent: ProfilerSection | undefined) {
     this.name = name;
@@ -29,18 +29,19 @@ export class ProfilerSection {
 
     const interval = diff(this.timeOnEnter, this.timeOnLeave);
 
-    if (interval < this.min) {
-      this.min = interval;
+    if (interval < this.minIntervalAsMilliseconds) {
+      this.minIntervalAsMilliseconds = interval;
     }
 
-    if (interval > this.max) {
-      this.max = interval;
+    if (interval > this.maxIntervalAsMilliseconds) {
+      this.maxIntervalAsMilliseconds = interval;
     }
 
-    this.average = (this.average * (this.triggerCount - 1) + interval) / this.triggerCount;
+    this.avgIntervalAsMilliseconds =
+      (this.avgIntervalAsMilliseconds * (this.triggerCount - 1) + interval) / this.triggerCount;
   }
 
-  getIndentation(): number {
+  protected getIndentation(): number {
     return this.parent !== undefined ? this.parent.getIndentation() + 1 : 0;
   }
 
@@ -51,10 +52,10 @@ export class ProfilerSection {
       implantation = implantation + '  ';
     }
 
-    const maxs = this.max / 1000;
-    const avgs = this.average / 1000;
-    const mins = this.min === Number.MAX_VALUE ? 0 : this.min / 1000;
-    const total = (this.average * this.triggerCount) / 1000;
+    const maxs = this.maxIntervalAsMilliseconds / 1000;
+    const avgs = this.avgIntervalAsMilliseconds / 1000;
+    const mins = this.minIntervalAsMilliseconds === Number.MAX_VALUE ? 0 : this.minIntervalAsMilliseconds / 1000;
+    const total = (this.avgIntervalAsMilliseconds * this.triggerCount) / 1000;
     const blockName = implantation + this.name;
 
     const resultArray = [

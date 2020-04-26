@@ -2,8 +2,8 @@
 import { getFullName } from './profiler.logic';
 
 export class Profiler {
-  sections: { [x: string]: ProfilerSection | undefined } = {};
-  currentSection?: ProfilerSection;
+  public sections: { [x: string]: ProfilerSection | undefined } = {};
+  private currentSection?: ProfilerSection;
 
   enter(sectionName: string): void {
     const fullName = getFullName(this.currentSection?.name, sectionName);
