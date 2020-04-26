@@ -7,5 +7,5 @@
     "strict": true,
     "lib": ["es2017", "es7", "es6", "dom"]
   },
-  "exclude": ["node_modules", "dist", "example"]
+  "exclude": ["node_modules", "dist", "test", "example", "**/*.d.ts"]
 }

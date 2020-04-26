@@ -9,7 +9,8 @@
     "tslint": "tslint --project tsconfig.json 'src/**/*.{ts}'",
     "tsc": "tsc --project tsconfig.json --skipLibCheck --noEmit",
     "lint": "yarn tslint && yarn tsc",
-    "build": "tsc"
+    "clean": "rimraf dist tsc",
+    "build": "yarn clean && yarn lint && tsc"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "@types/jest": "25.2.1",
     "jest": "25.4.0",
     "prettier": "2.0.5",
+    "rimraf": "3.0.2",
     "ts-jest": "25.4.0",
     "tslint": "5.0.0",
     "tslint-config-prettier": "1.18.0",

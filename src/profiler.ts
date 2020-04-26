@@ -1,4 +1,4 @@
-﻿import { ProfilerBlock } from './profiler-block';
+﻿import { ProfilerBlock } from './profiler.block';
 import { getFullName } from './profiler.logic';
 
 export class Profiler {

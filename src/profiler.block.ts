@@ -1,5 +1,6 @@
 ﻿import * as moment from 'moment';
 import { getFullName } from './profiler.logic';
+import { now } from './profiler.service';
 
 export class ProfilerBlock {
   name: string;
@@ -20,13 +21,14 @@ export class ProfilerBlock {
   }
 
   enter(): void {
-    this.timeOnEnter = moment();
+    this.timeOnEnter = now();
     this.triggerCount++;
   }
 
   leave(): void {
-    this.timeOnLeave = moment();
-    const interval = moment.duration(this.timeOnLeave.diff(this.timeOnEnter)).milliseconds();
+    this.timeOnLeave = now();
+
+    const interval = this.timeOnLeave.diff(this.timeOnEnter);
 
     if (interval < this.min) {
       this.min = interval;
@@ -56,9 +58,15 @@ export class ProfilerBlock {
     const total = (this.average * this.triggerCount) / 1000;
     const blockName = implantation + this.name;
 
-    return (
-      `${maxs.toFixed(3)}\t${avgs.toFixed(3)}\t${mins.toFixed(3)}\t${total.toFixed(3)}\t` +
-      `${this.triggerCount}\t\t${blockName}`
-    );
+    const resultArray = [
+      maxs.toFixed(3),
+      avgs.toFixed(3),
+      mins.toFixed(3),
+      total.toFixed(3),
+      this.triggerCount,
+      blockName,
+    ];
+
+    return resultArray.join('\t');
   }
 }
