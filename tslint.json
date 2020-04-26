@@ -1,6 +1,5 @@
 {
   "defaultSeverity": "error",
-  "rulesDirectory": ["node_modules/tslint-eslint-rules/dist/rules"],
   "extends": ["tslint:recommended", "tslint-config-prettier"],
   "linterOptions": {
     "exclude": ["node_modules/**/*"],
