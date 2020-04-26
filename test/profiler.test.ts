@@ -28,7 +28,7 @@ describe('Profiler should work properly', () => {
     profiler.leave();
 
     expect(profiler.getSummary()).toEqual(
-      `Max(s)	Avg(s)	Min(s)	Total(s)	Count	Block Name
+      `Max(s)	Avg(s)	Min(s)	Total(s)	Count	Section Name
 1.000	1.000	1.000	1.000	1	code_block
 `
     );
@@ -48,7 +48,7 @@ describe('Profiler should work properly', () => {
     profiler.leave();
 
     expect(profiler.getSummary()).toEqual(
-      `Max(s)	Avg(s)	Min(s)	Total(s)	Count	Block Name
+      `Max(s)	Avg(s)	Min(s)	Total(s)	Count	Section Name
 10.000	10.000	10.000	10.000	1	outer_block
 1.000	1.000	1.000	1.000	1	  inner_block
 `
@@ -72,7 +72,7 @@ describe('Profiler should work properly', () => {
     profiler.leave();
 
     expect(profiler.getSummary()).toEqual(
-      `Max(s)	Avg(s)	Min(s)	Total(s)	Count	Block Name
+      `Max(s)	Avg(s)	Min(s)	Total(s)	Count	Section Name
 10.000	10.000	10.000	10.000	1	outer_block
 2.000	1.500	1.000	3.000	2	  inner_block
 `

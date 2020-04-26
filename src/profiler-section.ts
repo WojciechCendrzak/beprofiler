@@ -1,9 +1,9 @@
 ﻿import { getFullName, diff } from './profiler.logic';
 import { now } from './profiler.service';
 
-export class ProfilerBlock {
+export class ProfilerSection {
   name: string;
-  parent?: ProfilerBlock;
+  parent?: ProfilerSection;
   min: number = Number.MAX_VALUE;
   max: number = 0;
   average: number = 0;
@@ -13,7 +13,7 @@ export class ProfilerBlock {
   timeOnEnter?: Date;
   timeOnLeave?: Date;
 
-  constructor(name: string, parent: ProfilerBlock | undefined) {
+  constructor(name: string, parent: ProfilerSection | undefined) {
     this.name = name;
     this.parent = parent;
     this.fullName = getFullName(parent?.name, name);
@@ -40,14 +40,14 @@ export class ProfilerBlock {
     this.average = (this.average * (this.triggerCount - 1) + interval) / this.triggerCount;
   }
 
-  getImplantation(): number {
-    return this.parent !== undefined ? this.parent.getImplantation() + 1 : 0;
+  getIndentation(): number {
+    return this.parent !== undefined ? this.parent.getIndentation() + 1 : 0;
   }
 
   toString(): string {
     let implantation = '';
 
-    for (let i = 0; i < this.getImplantation(); i++) {
+    for (let i = 0; i < this.getIndentation(); i++) {
       implantation = implantation + '  ';
     }
 

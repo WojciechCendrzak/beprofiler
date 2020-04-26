@@ -1,43 +1,43 @@
-﻿import { ProfilerBlock } from './profiler.block';
+﻿import { ProfilerSection } from './profiler-section';
 import { getFullName } from './profiler.logic';
 
 export class Profiler {
-  items: { [x: string]: ProfilerBlock | undefined } = {};
-  currentItem?: ProfilerBlock;
+  sections: { [x: string]: ProfilerSection | undefined } = {};
+  currentSection?: ProfilerSection;
 
-  enter(itemName: string): void {
-    const fullName = getFullName(this.currentItem?.name, itemName);
-    let item = this.items[fullName];
+  enter(sectionName: string): void {
+    const fullName = getFullName(this.currentSection?.name, sectionName);
+    let item = this.sections[fullName];
 
     if (!item) {
-      item = new ProfilerBlock(itemName, this.currentItem);
-      this.items[fullName] = item;
+      item = new ProfilerSection(sectionName, this.currentSection);
+      this.sections[fullName] = item;
     }
 
     item.enter();
-    this.currentItem = item;
+    this.currentSection = item;
   }
 
   leave(): void {
-    if (!this.currentItem) return;
+    if (!this.currentSection) return;
 
-    if (this.currentItem && this.items[this.currentItem.fullName]) {
-      const item = this.items[this.currentItem.fullName] as ProfilerBlock;
+    if (this.currentSection && this.sections[this.currentSection.fullName]) {
+      const item = this.sections[this.currentSection.fullName] as ProfilerSection;
       item.leave();
-      this.currentItem = item.parent;
+      this.currentSection = item.parent;
     }
   }
 
   getHeader(): string {
-    return `${'Max(s)'}\t${'Avg(s)'}\t${'Min(s)'}\t${'Total(s)'}\t${'Count'}\t${'Block Name'}`;
+    return `${'Max(s)'}\t${'Avg(s)'}\t${'Min(s)'}\t${'Total(s)'}\t${'Count'}\t${'Section Name'}`;
   }
 
   getSummary(): string {
     let result = this.getHeader() + '\n';
 
-    for (const key in this.items) {
-      if (this.items.hasOwnProperty(key)) {
-        const item = this.items[key] as ProfilerBlock;
+    for (const key in this.sections) {
+      if (this.sections.hasOwnProperty(key)) {
+        const item = this.sections[key] as ProfilerSection;
         result += item.toString() + '\n';
       }
     }
@@ -46,6 +46,6 @@ export class Profiler {
   }
 
   clear(): void {
-    this.items = {};
+    this.sections = {};
   }
 }
