@@ -4,6 +4,6 @@
   "main": "index.js",
   "license": "ISC",
   "dependencies": {
-    "beprofiler": "0.1.0"
+    "beprofiler": "0.1.1"
   }
 }
