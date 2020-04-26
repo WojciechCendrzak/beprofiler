@@ -1,5 +1,4 @@
-﻿import * as moment from 'moment';
-import { getFullName, diff } from './profiler.logic';
+﻿import { getFullName, diff } from './profiler.logic';
 import { now } from './profiler.service';
 
 export class ProfilerBlock {
@@ -11,8 +10,8 @@ export class ProfilerBlock {
   triggerCount: number = 0;
 
   fullName: string;
-  timeOnEnter?: moment.Moment;
-  timeOnLeave?: moment.Moment;
+  timeOnEnter?: Date;
+  timeOnLeave?: Date;
 
   constructor(name: string, parent: ProfilerBlock | undefined) {
     this.name = name;

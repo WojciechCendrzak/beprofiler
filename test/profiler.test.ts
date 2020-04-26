@@ -1,5 +1,4 @@
-﻿import * as moment from 'moment';
-import { Profiler } from '../src/profiler';
+﻿import { Profiler } from '../src/profiler';
 import { now } from '../src/profiler.service';
 
 jest.mock('../src/profiler.service', () => ({
@@ -10,7 +9,7 @@ describe('Profiler should work properly', () => {
   test('Should enter and leave', () => {
     expect(() => {
       const profiler = new Profiler();
-      (now as jest.Mock).mockImplementation(() => moment());
+      (now as jest.Mock).mockImplementation(() => new Date());
 
       profiler.enter('code_block');
       profiler.enter('some internal block');
@@ -22,8 +21,8 @@ describe('Profiler should work properly', () => {
   test('Should get simply summary', () => {
     const profiler = new Profiler();
     (now as jest.Mock)
-      .mockImplementationOnce(() => moment('2020-01-01T00:00:00.000Z'))
-      .mockImplementationOnce(() => moment('2020-01-01T00:00:01.000Z'));
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:00.000Z'))
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:01.000Z'));
 
     profiler.enter('code_block');
     profiler.leave();
@@ -38,10 +37,10 @@ describe('Profiler should work properly', () => {
   test('Should get inner block summary', () => {
     const profiler = new Profiler();
     (now as jest.Mock)
-      .mockImplementationOnce(() => moment('2020-01-01T00:00:00.000Z'))
-      .mockImplementationOnce(() => moment('2020-01-01T00:00:01.000Z'))
-      .mockImplementationOnce(() => moment('2020-01-01T00:00:02.000Z'))
-      .mockImplementationOnce(() => moment('2020-01-01T00:00:10.000Z'));
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:00.000Z'))
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:01.000Z'))
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:02.000Z'))
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:10.000Z'));
 
     profiler.enter('outer_block');
     profiler.enter('inner_block');
@@ -58,12 +57,12 @@ describe('Profiler should work properly', () => {
   test('Should get 2 inner block summary', () => {
     const profiler = new Profiler();
     (now as jest.Mock)
-      .mockImplementationOnce(() => moment('2020-01-01T00:00:00.000Z'))
-      .mockImplementationOnce(() => moment('2020-01-01T00:00:00.000Z'))
-      .mockImplementationOnce(() => moment('2020-01-01T00:00:01.000Z'))
-      .mockImplementationOnce(() => moment('2020-01-01T00:00:02.000Z'))
-      .mockImplementationOnce(() => moment('2020-01-01T00:00:04.000Z'))
-      .mockImplementationOnce(() => moment('2020-01-01T00:00:10.000Z'));
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:00.000Z'))
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:00.000Z'))
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:01.000Z'))
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:02.000Z'))
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:04.000Z'))
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:10.000Z'));
 
     profiler.enter('outer_block');
     profiler.enter('inner_block');

@@ -1,3 +1,1 @@
-import * as moment from 'moment';
-
-export const now = () => moment();
+export const now = () => new Date();
