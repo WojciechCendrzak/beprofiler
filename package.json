@@ -6,6 +6,7 @@
   "types": "index.d.ts",
   "scripts": {
     "test": "yarn lint && jest",
+    "coveralls": "jest --coverage",
     "tslint": "tslint --project tsconfig.json 'src/**/*.{ts}'",
     "tsc": "tsc --project tsconfig.json --skipLibCheck --noEmit",
     "lint": "yarn tslint && yarn tsc",
@@ -30,6 +31,7 @@
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "25.2.1",
+    "coveralls": "3.1.0",
     "jest": "25.4.0",
     "prettier": "2.0.5",
     "rimraf": "3.0.2",
