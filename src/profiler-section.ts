@@ -2,16 +2,16 @@
 import { now } from './profiler.service';
 
 export class ProfilerSection {
-  public name: string;
-  public fullName: string;
-  public parent?: ProfilerSection;
-  public triggerCount: number = 0;
-  public minIntervalAsMilliseconds: number = Number.MAX_VALUE;
-  public maxIntervalAsMilliseconds: number = 0;
-  public avgIntervalAsMilliseconds: number = 0;
+  name: string;
+  fullName: string;
+  parent?: ProfilerSection;
+  triggerCount: number = 0;
+  minIntervalAsMilliseconds: number = Number.MAX_VALUE;
+  maxIntervalAsMilliseconds: number = 0;
+  avgIntervalAsMilliseconds: number = 0;
 
-  public timeOnEnter?: Date;
-  public timeOnLeave?: Date;
+  timeOnEnter?: Date;
+  timeOnLeave?: Date;
 
   constructor(name: string, parent: ProfilerSection | undefined) {
     this.name = name;
@@ -41,7 +41,7 @@ export class ProfilerSection {
       (this.avgIntervalAsMilliseconds * (this.triggerCount - 1) + interval) / this.triggerCount;
   }
 
-  protected getIndentation(): number {
+  private getIndentation(): number {
     return this.parent !== undefined ? this.parent.getIndentation() + 1 : 0;
   }
 

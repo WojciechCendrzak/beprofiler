@@ -2,7 +2,7 @@
 import { getFullName } from './profiler.logic';
 
 export class Profiler {
-  public sections: { [x: string]: ProfilerSection | undefined } = {};
+  sections: { [x: string]: ProfilerSection | undefined } = {};
   private currentSection?: ProfilerSection;
 
   enter(sectionName: string): void {

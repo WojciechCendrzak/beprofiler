@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-beprofiler@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/beprofiler/-/beprofiler-0.2.0.tgz#d5ae560c66d203ddef7dce20cd41b8f092732a7c"
-  integrity sha512-B+Sm7ZuX9Yj4TfJiXHj64v1H2XlgHzQcLPUvVW+vTjooyQ1C8ikOC2aVqR2HNJ9Vs+Hc8BzmC5aRaeBqAsMX0w==
+beprofiler@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/beprofiler/-/beprofiler-0.2.1.tgz#1b12ee6af06dcc63630faca91b11f6f26be1d30a"
+  integrity sha512-DDPKpc3x5oGw8rmHDFqnoQWibHePJAMG1Ub4EX8D16VlyVEVUfulla0mNNbdLOy0rq8oPwRln7s75rfw8Zq4XQ==
