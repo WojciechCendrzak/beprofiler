@@ -6,7 +6,7 @@
   "types": "index.d.ts",
   "scripts": {
     "test": "yarn lint && jest",
-    "coveralls": "jest --coverage",
+    "coveralls": "jest --coverage && coveralls < coverage/lcov.info",
     "tslint": "tslint --project tsconfig.json 'src/**/*.{ts}'",
     "tsc": "tsc --project tsconfig.json --skipLibCheck --noEmit",
     "lint": "yarn tslint && yarn tsc",
