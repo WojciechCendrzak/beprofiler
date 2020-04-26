@@ -1,5 +1,5 @@
 ﻿import * as moment from 'moment';
-import { getFullName } from './profiler.logic';
+import { getFullName, diff } from './profiler.logic';
 import { now } from './profiler.service';
 
 export class ProfilerBlock {
@@ -28,7 +28,7 @@ export class ProfilerBlock {
   leave(): void {
     this.timeOnLeave = now();
 
-    const interval = this.timeOnLeave.diff(this.timeOnEnter);
+    const interval = diff(this.timeOnEnter, this.timeOnLeave);
 
     if (interval < this.min) {
       this.min = interval;

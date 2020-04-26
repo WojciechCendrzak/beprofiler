@@ -2,7 +2,7 @@
 import { Profiler } from '../src/profiler';
 import { now } from '../src/profiler.service';
 
-jest.mock('./date-time.service', () => ({
+jest.mock('../src/profiler.service', () => ({
   now: jest.fn(),
 }));
 

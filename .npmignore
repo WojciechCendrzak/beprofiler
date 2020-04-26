@@ -1,5 +1,6 @@
 src
 example
+test
 .editorconfig
 .prettierrc.json
 jest.config.js

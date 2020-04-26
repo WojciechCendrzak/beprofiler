@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { diff } from '../src/profiler.service';
+import { diff } from '../src/profiler.logic';
 
 describe(diff.name, () => {
   describe.each`

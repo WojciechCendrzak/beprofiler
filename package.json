@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "test": "jest",
+    "test": "yarn lint && jest",
     "tslint": "tslint --project tsconfig.json 'src/**/*.{ts}'",
     "tsc": "tsc --project tsconfig.json --skipLibCheck --noEmit",
     "lint": "yarn tslint && yarn tsc",
