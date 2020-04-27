@@ -78,4 +78,24 @@ describe('Profiler should work properly', () => {
 `
     );
   });
+
+  test('Should clear correctly', () => {
+    const profiler = new Profiler();
+    (now as jest.Mock)
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:01.000Z'))
+      .mockImplementationOnce(() => new Date('2020-01-01T00:00:02.000Z'));
+
+    profiler.enter('code_block');
+    profiler.leave();
+
+    expect(profiler.getSummary()).toEqual(
+      `Max(s)	Avg(s)	Min(s)	Total(s)	Count	Section Name
+1.000	1.000	1.000	1.000	1	code_block
+`
+    );
+
+    profiler.clear();
+    expect(profiler.getSummary()).toEqual(`Max(s)	Avg(s)	Min(s)	Total(s)	Count	Section Name
+`);
+  });
 });
