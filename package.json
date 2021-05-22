@@ -1,7 +1,7 @@
 {
   "name": "beprofiler",
   "version": "0.2.3",
-  "description": "An easy block profiler",
+  "description": "An easy JavaScript profiler",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {

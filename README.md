@@ -5,4 +5,4 @@
 
 # beprofiler
 
-An easy block profiler
+An easy JavaScript profiler
