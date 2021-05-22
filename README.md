@@ -5,4 +5,4 @@
 
 # beprofiler
 
-An easy JavaScript profiler
+An simply and intuitive JavaScript profiler

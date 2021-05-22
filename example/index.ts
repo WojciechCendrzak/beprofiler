@@ -1,9 +1,12 @@
-import { Profiler } from 'beprofiler';
+import { createAndFillArray, createAndFillArrayNTimes } from './logic';
+import { profiler } from './profiler';
 
-const profiler = new Profiler();
+profiler.enter('createAndFillArray');
+createAndFillArray(10000000);
+profiler.leave();
 
-profiler.enter('Some name');
-
+profiler.enter('createAndFillArrayNTimes');
+createAndFillArrayNTimes(3, 10000000);
 profiler.leave();
 
 console.log(profiler.getSummary());
